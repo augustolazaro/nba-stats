@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { ThemeProvider } from 'styled-components'
 
 import { ApolloProvider } from 'react-apollo'
 import ApolloClient from 'apollo-boost'
@@ -11,9 +12,19 @@ const client = new ApolloClient({
   uri: "http://localhost:4000/graphql",
 });
 
+const theme = {
+  colors: {
+    primary: '#17408B',
+    secondary: '#FFF',
+    highlight: '#C9082A',
+  },
+}
+
 const Root = () => (
   <ApolloProvider client={client}>
-    <App />
+    <ThemeProvider theme={theme}>
+      <App />
+    </ThemeProvider>
   </ApolloProvider>
 )
 

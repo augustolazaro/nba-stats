@@ -4,6 +4,8 @@ import styled from 'styled-components'
 
 import { formatDate } from '../utils'
 
+import TeamLogo from '../common/TeamLogo'
+
 import createQueryRenderer from '../../hocs/createQueryRenderer'
 
 const Container = styled.div`
@@ -38,12 +40,6 @@ const TeamAbbr = styled.span`
 const Score = styled.span`
   font-size: 20px;
   margin: 0 5px;
-`
-
-const TeamLogo = styled.img`
-  height: 50px;
-  width: 50px;
-  object-fit: contain;
 `
 
 const Divider = styled.span`

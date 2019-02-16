@@ -1,7 +1,8 @@
 import * as React from 'react'
-import { Query } from 'react-apollo'
 import graphql from 'graphql-tag'
 import styled from 'styled-components'
+
+import createQueryRenderer from '../../hocs/createQueryRenderer'
 
 const Container = styled.div`
   display: flex;
@@ -36,40 +37,39 @@ const PlayerFirstName = styled.span`
   color: #999;
 `
 
-const PlayersList = () => (
-  <Query
-    query={
-      graphql`
-        {
-          players {
-            id
-            firstName
-            lastName
-            image
-          }
-        }
-      `
+type Props = {
+  query: {
+    players: Array<{}>,
+  }
+}
+
+const PlayersList = ({ query }: Props) => {
+  const goToDetails = () => {}
+
+  return (
+    <Container>
+      {query.players.map(({ firstName, lastName, image }: any, index: number) => (
+        <PlayerCard key={index}>
+          <PlayerImage src={image} alt={`${firstName} ${lastName}`} />
+          <PlayerNameWrapper>
+            <PlayerLastName>{lastName}</PlayerLastName>
+            <PlayerFirstName>{firstName}</PlayerFirstName>
+          </PlayerNameWrapper>
+        </PlayerCard>
+      ))}
+    </Container>
+  )
+}
+
+export default createQueryRenderer(PlayersList, {
+  query: graphql`
+    {
+      players {
+        id
+        firstName
+        lastName
+        image
+      }
     }
-  >
-    {({ loading, error, data }) => {
-      if (loading) return <p>Loading...</p>
-      if (error) return <p>{ error }</p>
-
-      return (
-        <Container>
-          {data.players.map(({ firstName, lastName, image }: any, index: number) => (
-            <PlayerCard key={index}>
-              <PlayerImage src={image} alt={`${firstName} ${lastName}`} />
-              <PlayerNameWrapper>
-                <PlayerLastName>{lastName}</PlayerLastName>
-                <PlayerFirstName>{firstName}</PlayerFirstName>
-              </PlayerNameWrapper>
-            </PlayerCard>
-          ))}
-        </Container>
-      )
-    }}
-  </Query>
-);
-
-export default PlayersList
+  `,
+})

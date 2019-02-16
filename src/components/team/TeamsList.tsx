@@ -1,7 +1,8 @@
 import * as React from 'react'
-import { Query } from 'react-apollo'
 import graphql from 'graphql-tag'
 import styled from 'styled-components'
+
+import createQueryRenderer from '../../hocs/createQueryRenderer'
 
 const Container = styled.div`
   display: flex;
@@ -22,42 +23,37 @@ const TeamLogo = styled.img`
   object-fit: contain;
 `
 
-const TeamsList = () => {
+type Props = {
+  query: {
+    teams: Array<{}>,
+  },
+}
+
+const TeamsList = ({ query }: Props) => {
   const goToDetails = (id: string) => {
     console.log('--- teamId:', id)
   }
 
   return (
-    <Query
-      query={
-        graphql`
-          {
-            teams {
-              id
-              name
-              logo
-              colors
-            }
-          }
-        `
-      }
-    >
-      {({ loading, error, data }) => {
-        if (loading) return <p>Loading...</p>
-        if (error) return <p>{ error }</p>
-
-        return (
-          <Container>
-            {data.teams.map((team: any, index: number) => (
-              <TeamCard key={index} color={team.colors[0]} onClick={() => goToDetails(team.id)}>
-                <TeamLogo src={team.logo} />
-              </TeamCard>
-            ))}
-          </Container>
-        )
-      }}
-    </Query>
+    <Container>
+      {query.teams.map((team: any, index: number) => (
+        <TeamCard key={index} color={team.colors[0]} onClick={() => goToDetails(team.id)}>
+          <TeamLogo src={team.logo} />
+        </TeamCard>
+      ))}
+    </Container>
   )
 }
 
-export default TeamsList
+export default createQueryRenderer(TeamsList, {
+  query: graphql`
+    {
+      teams {
+        id
+        name
+        logo
+        colors
+      }
+    }
+  `,
+})

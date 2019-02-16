@@ -88,7 +88,7 @@ const Home = ({ query }: Props) => {
 
 export default createQueryRenderer(Home, {
   query: graphql`
-    {
+    query HomeQuery {
       games {
         date
         status

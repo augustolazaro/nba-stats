@@ -47,7 +47,7 @@ const TeamsList = ({ query }: Props) => {
 
 export default createQueryRenderer(TeamsList, {
   query: graphql`
-    {
+    query TeamsListQuery {
       teams {
         id
         name

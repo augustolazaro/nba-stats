@@ -7,11 +7,11 @@ const Wrapper = styled.div`
   flex-direction: row;
   align-items: center
   padding: 0 20px;
-  box-shadow: 0px 1px 2px 0px #ccc;
   height: 90px;
-  margin-bottom: 20px;
   background-color: ${props => props.theme.colors.primary};
+  border-bottom: 8px solid ${props => props.theme.colors.highlight};
 `
+// box-shadow: 0px 1px 2px 0px #ccc;
 
 const Logo = styled.img`
   object-fit: contain;
@@ -39,8 +39,9 @@ const Navbar = () => {
       <Link to={'/'}>
         <Logo src={'https://stats.nba.com/media/img/league/nba-logoman-word-white.svg'} width={50} />
       </Link>
-      {items.map(item => (
+      {items.map((item, index) => (
         <NavItem
+          key={index}
           to={item.route}
           style={{ textDecoration: 'none' }}
         >

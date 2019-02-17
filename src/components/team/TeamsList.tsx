@@ -2,12 +2,20 @@ import * as React from 'react'
 import graphql from 'graphql-tag'
 import styled from 'styled-components'
 
+import TeamLogo from '../common/TeamLogo'
+
 import createQueryRenderer from '../../hocs/createQueryRenderer'
 
 const Container = styled.div`
   display: flex;
+  flex-direction: column;
+`
+
+const Content = styled.div`
+  display: flex;
   flex-wrap: wrap;
 `
+
 const TeamCard = styled.div`
   display: flex;
   justify-content: center;
@@ -17,30 +25,47 @@ const TeamCard = styled.div`
   cursor: pointer;
 `
 
-const TeamLogo = styled.img`
-  height: 200px;
-  width: 200px;
-  object-fit: contain;
+// const TeamLogo = styled.img`
+//   height: 200px;
+//   width: 200px;
+//   object-fit: contain;
+// `
+
+const Header = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
 `
+
+const PageTitle = styled.h1``
+
 
 type Props = {
   query: {
     teams: Array<{}>,
   },
+  history: any,
 }
 
-const TeamsList = ({ query }: Props) => {
+const TeamsList = ({ query, history }: Props) => {
   const goToDetails = (id: string) => {
-    console.log('--- teamId:', id)
+    history.push(`/team/${id}`)
   }
 
   return (
     <Container>
-      {query.teams.map((team: any, index: number) => (
-        <TeamCard key={index} color={team.colors[0]} onClick={() => goToDetails(team.id)}>
-          <TeamLogo src={team.logo} />
-        </TeamCard>
-      ))}
+      <Header>
+        <PageTitle>Teams</PageTitle>
+      </Header>
+
+      <Content>
+        {query.teams.map((team: any, index: number) => (
+          <TeamCard key={index} color={team.colors[0]} onClick={() => goToDetails(team.id)}>
+            <TeamLogo src={team.logo} size={200} />
+          </TeamCard>
+        ))}
+      </Content>
     </Container>
   )
 }

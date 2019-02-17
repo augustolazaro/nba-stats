@@ -24,12 +24,16 @@ const NavItem = styled(Link)`
 
 const items = [
   {
-    label: 'Players',
-    route: '/players',
+    label: 'Scores',
+    route: '/scores',
   },
   {
     label: 'Teams',
     route: '/teams',
+  },
+  {
+    label: 'Players',
+    route: '/players',
   },
 ]
 

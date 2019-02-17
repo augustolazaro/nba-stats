@@ -121,11 +121,11 @@ const PlayerDetails = ({ query }: Props) => {
           </PlayerInfos>
         </HeaderSection>
         {player.team && (
-        <HeaderSection>
-          <h3>{player.position} | #{player.jersey}</h3>
-          <TeamLogo src={player.team.logo} size={100} />
-        </HeaderSection>
-      )}
+          <HeaderSection>
+            <h3>{player.position} | #{player.jersey}</h3>
+            <TeamLogo src={player.team.logo} size={100} />
+          </HeaderSection>
+        )}
       </Header>
       {!player.stats && <EmptyMessage>No stats for this player</EmptyMessage>}
       {player.stats && (

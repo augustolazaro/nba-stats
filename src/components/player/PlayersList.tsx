@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import createQueryRenderer from '../../hocs/createQueryRenderer'
 import TeamLogo from '../common/TeamLogo';
 import SearchInput from '../common/SearchInput'
+import PlayerCard from '../common/PlayerCard'
 
 const Container = styled.div``
 
@@ -12,46 +13,6 @@ const Content = styled.div`
   display: flex;
   flex-wrap: wrap;
   padding: 0 20px 20px;
-`
-
-const PlayerCard = styled.div`
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #eee;
-  flex: 1;
-  min-width: 250px;
-  max-width: 300px;
-  cursor: pointer;
-  background-color: white;
-`
-
-const PlayerImage = styled.img`
-  height: 220px;
-  width: 100%;
-  object-fit: contain;
-`
-
-const PlayerNameWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`
-
-const PlayerLastName = styled.span`
-  font-size: 22px;
-  font-weight: bold;
-`
-
-const PlayerFirstName = styled.span`
-  font-size: 16px;
-  color: #999;
-`
-
-const PlayerDetail = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px;
 `
 
 const Header = styled.div`
@@ -96,18 +57,16 @@ const PlayersList = ({ query, history, refetch }: Props) => {
         <SearchInput placeholder='Search player by name' onSearch={handleSearch} />
       </Header>
       <Content>
-        {query.players.map(({ firstName, lastName, image, id, team }: any, index: number) => (
-          <PlayerCard key={id} onClick={() => goToDetails(id.toString())}>
-            <PlayerImage src={image} alt={`${firstName} ${lastName}`} />
-            <PlayerDetail>
-              <PlayerNameWrapper>
-                <PlayerLastName>{lastName}</PlayerLastName>
-                <PlayerFirstName>{firstName}</PlayerFirstName>
-              </PlayerNameWrapper>
-
-              {team && (<TeamLogo src={team.logo} size={40} />)}
-            </PlayerDetail>
-          </PlayerCard>
+        {query.players.map(({ firstName, lastName, image, id, team }: any) => (
+          <PlayerCard 
+            key={id}
+            id={id}
+            firstName={firstName}
+            lastName={lastName}
+            image={image}
+            team={team}
+            onClick={goToDetails} 
+          />
         ))}
       </Content>
     </Container>

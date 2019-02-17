@@ -5,11 +5,20 @@ import styled from 'styled-components'
 import { formatDate } from '../utils'
 
 import TeamLogo from '../common/TeamLogo'
+//@ts-ignore
+import DateSelector from '../common/DateSelector'
 
 import createQueryRenderer from '../../hocs/createQueryRenderer'
 
 const Container = styled.div`
   display: flex;
+  flex-direction: column;
+`
+
+const Content = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 `
 
 const GameCard = styled.div`
@@ -19,6 +28,8 @@ const GameCard = styled.div`
   border-radius: 2px;
   padding: 20px;
   margin: 10px;
+  background-color: white;
+  width: 290px;
 `
 
 const CardHeader = styled.div`
@@ -26,7 +37,7 @@ const CardHeader = styled.div`
   align-items: center;
 `
 
-const ScoreWrapper = styled.div`
+const ScoreWrapper = styled.div.attrs<{ home: string }>({})`
   flex: 1;
   display: flex;
   align-items: center;
@@ -52,44 +63,67 @@ const HelperText = styled.span`
   text-align: center;
 `
 
+const EmptyMessage = styled.span`
+  font-size: 16px;
+`
+
 type Props = {
   query: {
     games: Array<{}>,
   },
+  refetch: (args: object) => void,
 }
 
-const Home = ({ query }: Props) => {
+const Home = ({ query, refetch }: Props) => {
   const { games } = query 
+
+  const handleDateChange = (date: Date) => {
+    refetch({
+      variables: {
+        date,
+      },
+      updateQuery: (prev: any, { fetchMoreResult }: any) => {
+        return {
+          ...prev, 
+          games: fetchMoreResult.games,
+        }
+      },
+    })
+  }
 
   return (
     <Container>
-      {games.map((game: any) => (
-        <GameCard>
-          <HelperText>{formatDate(game.date)}</HelperText>
-          <CardHeader>
-            <ScoreWrapper>
-              <TeamAbbr>{game.visitorTeam.abbreviation}</TeamAbbr>
-              <TeamLogo src={game.visitorTeam.logo}></TeamLogo>
-              <Score>{game.visitorTeamScore}</Score>
-            </ScoreWrapper>
-            <Divider>x</Divider>
-            <ScoreWrapper>
-              <Score>{game.homeTeamScore}</Score>
-              <TeamLogo src={game.homeTeam.logo}></TeamLogo>
-              <TeamAbbr>{game.homeTeam.abbreviation}</TeamAbbr>
-            </ScoreWrapper>
-          </CardHeader>
-          <HelperText>{game.status}</HelperText>
-        </GameCard>
-      ))}
+      <DateSelector onChange={handleDateChange} />
+      <Content>
+        {!games.length && (<EmptyMessage>No scheduled games on this day</EmptyMessage>)}
+        {!!games.length && games.map((game: any) => (
+          <GameCard>
+            <HelperText>{formatDate(game.date)}</HelperText>
+            <CardHeader>
+              <ScoreWrapper style={{ justifyContent: 'flex-end' }}>
+                <TeamAbbr>{game.visitorTeam && game.visitorTeam.abbreviation}</TeamAbbr>
+                <TeamLogo src={game.visitorTeam && game.visitorTeam.logo}></TeamLogo>
+                <Score>{game.visitorTeamScore}</Score>
+              </ScoreWrapper>
+              <Divider>x</Divider>
+              <ScoreWrapper>
+                <Score>{game.homeTeamScore}</Score>
+                <TeamLogo src={game.homeTeam && game.homeTeam.logo}></TeamLogo>
+                <TeamAbbr>{game.homeTeam && game.homeTeam.abbreviation}</TeamAbbr>
+              </ScoreWrapper>
+            </CardHeader>
+            <HelperText>{game.status}</HelperText>
+          </GameCard>
+        ))}
+      </Content>
     </Container>
   )
 }
 
 export default createQueryRenderer(Home, {
   query: graphql`
-    query HomeQuery {
-      games {
+    query HomeQuery ($date: String) {
+      games(date: $date) {
         date
         status
         homeTeamScore

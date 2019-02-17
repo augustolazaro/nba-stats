@@ -18,6 +18,9 @@ const theme = {
     secondary: '#FFF',
     highlight: '#C9082A',
   },
+  size: {
+    nav: 60,
+  },
 }
 
 const Root = () => (

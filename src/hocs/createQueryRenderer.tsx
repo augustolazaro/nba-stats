@@ -1,6 +1,8 @@
 import * as React from 'react'
 import { Query } from 'react-apollo'
 
+import Loader from '../components/common/Loader'
+
 type Config = {
   query: any,
   queryParams?: (props: any) => object | undefined,
@@ -18,7 +20,7 @@ export default function createQueryRenderer(Component: React.ComponentType<any>,
     return (
       <Query query={query} variables={variables}>
         {({ loading, error, data, fetchMore }) => {
-          if (loading) return <p>Loading...</p>
+          if (loading) return <Loader />
           if (error) return <p>{ error }</p>
     
           return (

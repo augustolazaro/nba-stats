@@ -83,6 +83,7 @@ export default createQueryRenderer(PlayersList, {
         image
         team {
           logo
+          colors
         }
       }
     }

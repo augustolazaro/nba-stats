@@ -7,7 +7,7 @@ const Wrapper = styled.div`
   flex-direction: row;
   align-items: center
   padding: 0 20px;
-  height: 90px;
+  height: ${props => props.theme.size.nav}px;
   background-color: ${props => props.theme.colors.primary};
   border-bottom: 8px solid ${props => props.theme.colors.highlight};
 `

@@ -12,6 +12,13 @@ const Card = styled.div`
   max-width: 280px;
   cursor: pointer;
   background-color: white;
+  position: relative;
+  
+  &:hover {
+    .overlay {
+      height: 100%;
+    }
+  }
 `
 
 const PlayerImage = styled.img`
@@ -43,6 +50,22 @@ const PlayerDetail = styled.div`
   padding: 10px;
 `
 
+const Overlay = styled.div`
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: ${props => props.color || props.theme.colors.primary};
+  opacity: .9;
+  height: 0;
+  transition: .2s ease-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 16px;
+`
+
 type Props = {
   firstName: string,
   lastName: string,
@@ -63,6 +86,10 @@ const PlayerCard = ({ firstName, lastName, image, team, onClick, id }: Props) =>
 
         {team && (<TeamLogo src={team.logo} size={40} />)}
       </PlayerDetail>
+
+      <Overlay color={team && team.colors[0]} className='overlay'>
+        <span>See details</span>
+      </Overlay>
     </Card>
   )
 } 

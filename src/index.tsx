@@ -11,7 +11,7 @@ import ApolloClient from 'apollo-boost'
 require('dotenv').config()
 
 const client = new ApolloClient({
-  uri: process.env.NODE_ENV === 'development' ? 'http://localhost:4000/graphql' : 'https://nba-stats-server.herokuapp.com/graphql',
+  uri: 'https://nba-stats-server.herokuapp.com/graphql',
 });
 
 const theme = {

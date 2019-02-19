@@ -1,15 +1,17 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
+import './index.css'
 import * as serviceWorker from './serviceWorker';
 import { ThemeProvider } from 'styled-components'
 
 import { ApolloProvider } from 'react-apollo'
 import ApolloClient from 'apollo-boost'
 
+require('dotenv').config()
+
 const client = new ApolloClient({
-  uri: "http://localhost:4000/graphql",
+  uri: process.env.NODE_ENV === 'development' ? 'http://localhost:4000/graphql' : 'https://nba-stats-server.herokuapp.com/graphql',
 });
 
 const theme = {

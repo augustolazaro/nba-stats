@@ -3,7 +3,6 @@ import graphql from 'graphql-tag'
 import styled from 'styled-components'
 
 import createQueryRenderer from '../../hocs/createQueryRenderer'
-import TeamLogo from '../common/TeamLogo';
 import SearchInput from '../common/SearchInput'
 import PlayerCard from '../common/PlayerCard'
 
@@ -88,4 +87,7 @@ export default createQueryRenderer(PlayersList, {
       }
     }
   `,
+  variables: {
+    search: null,
+  },
 })

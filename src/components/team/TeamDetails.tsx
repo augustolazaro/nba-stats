@@ -34,7 +34,7 @@ const Name = styled.h1`
 `
 
 const Record = styled.span`
-  color: #999;
+  color: #bbb;
 `
 
 const HeaderSection = styled.div`
@@ -56,7 +56,7 @@ const StatNumber = styled.span`
 
 const StatName = styled.span`
   font-size: 18px;
-  color: #999;
+  color: #bbb;
   text-align: center;
 `
 

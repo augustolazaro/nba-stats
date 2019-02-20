@@ -6,6 +6,8 @@ import createQueryRenderer from '../../hocs/createQueryRenderer'
 import SearchInput from '../common/SearchInput'
 import PlayerCard from '../common/PlayerCard'
 
+import { Context } from '../../contexts/FavContext'
+
 const Container = styled.div``
 
 const Content = styled.div`
@@ -34,6 +36,8 @@ type Props = {
 }
 
 const PlayersList = ({ query, history, refetch }: Props) => {
+  const { state, dispatch } = React.useContext(Context)
+
   const goToDetails = (id: string) => history.push(`/player/${id}`)
 
   const handleSearch = (search: string) => {

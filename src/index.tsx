@@ -7,11 +7,13 @@ import { ThemeProvider } from 'styled-components'
 
 import { ApolloProvider } from 'react-apollo'
 import ApolloClient from 'apollo-boost'
+import { ContextProvider } from './contexts/FavContext'
 
 require('dotenv').config()
 
 const client = new ApolloClient({
-  uri: 'https://nba-stats-server.herokuapp.com/graphql',
+  // uri: 'http://localhost:4000/graphql',
+  uri: 'https://57367a0e.ngrok.io/graphql',
 });
 
 const theme = {
@@ -28,7 +30,9 @@ const theme = {
 const Root = () => (
   <ApolloProvider client={client}>
     <ThemeProvider theme={theme}>
-      <App />
+      <ContextProvider>
+        <App />
+      </ContextProvider>
     </ThemeProvider>
   </ApolloProvider>
 )

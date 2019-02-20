@@ -2,6 +2,9 @@ import * as React from 'react'
 import styled from 'styled-components'
 
 import TeamLogo from './TeamLogo'
+import { Star } from 'react-feather'
+
+import { Context } from '../../contexts/FavContext'
 
 const Card = styled.div`
   display: flex;
@@ -74,10 +77,18 @@ const Overlay = styled.div`
   height: 0;
   transition: .2s ease-out;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   color: white;
   font-size: 16px;
+`
+
+const FavWrapper = styled.div`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
 `
 
 type Props = {
@@ -89,6 +100,21 @@ type Props = {
   onClick: (id: string) => void,
 }
 const PlayerCard = ({ firstName, lastName, image, team, onClick, id }: Props) => {
+  const { state, dispatch } = React.useContext(Context)
+
+  const isFav = (id: string) => {
+    return state.favPlayers.includes(id)
+  }
+
+  const handleFav = (e: any, id: string) => {
+    e.stopPropagation()
+    const type = isFav(id) ? 'remove' : 'add'
+    const payload = { fav: 'favPlayers', id }
+
+    // @ts-ignore
+    dispatch({ type, payload })
+  }
+
   return (
     <Card onClick={() => onClick(id.toString())}>
       <PlayerImage src={image} alt={`${firstName} ${lastName}`} />
@@ -104,6 +130,10 @@ const PlayerCard = ({ firstName, lastName, image, team, onClick, id }: Props) =>
       <Overlay color={team && team.colors[0]} className='overlay'>
         <span>See details</span>
       </Overlay>
+
+      <FavWrapper onClick={(e: any) => handleFav(e, id)}>
+        <Star size={25} color={isFav(id) ? 'gold' : 'rgba(0, 0, 0, .3)'} />
+      </FavWrapper>
     </Card>
   )
 } 

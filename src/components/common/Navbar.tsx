@@ -35,6 +35,10 @@ const items = [
     label: 'Players',
     route: '/players',
   },
+  {
+    label: 'Favorites',
+    route: '/favorites',
+  },
 ]
 
 const Navbar = () => {

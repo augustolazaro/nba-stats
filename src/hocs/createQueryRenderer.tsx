@@ -21,7 +21,7 @@ export default function createQueryRenderer(Component: React.ComponentType<any>,
       <Query query={query} variables={variables}>
         {({ loading, error, data, fetchMore }) => {
           if (loading) return <Loader />
-          if (error) return <p>{ error }</p>
+          if (error) return <p>Network Error</p>
     
           return (
             <Component query={data} refetch={fetchMore} {...props} />

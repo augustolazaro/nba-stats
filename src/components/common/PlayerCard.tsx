@@ -19,12 +19,21 @@ const Card = styled.div`
       height: 100%;
     }
   }
+
+  @media (max-width: 700px) {
+    min-width: 120px;
+    max-width: 150px;
+  }
 `
 
 const PlayerImage = styled.img`
   height: 220px;
   width: 100%;
   object-fit: contain;
+
+  @media (max-width: 700px) {
+    height: 120px;
+  }
 `
 
 const PlayerNameWrapper = styled.div`
@@ -48,6 +57,11 @@ const PlayerDetail = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 10px;
+  flex-wrap: wrap;
+
+  @media (max-width: 700px) {
+    flex-direction: column;
+  }
 `
 
 const Overlay = styled.div`

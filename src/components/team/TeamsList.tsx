@@ -23,13 +23,11 @@ const TeamCard = styled.div`
   padding: 20px;
   background-color: ${props => props.color};
   cursor: pointer;
-`
 
-// const TeamLogo = styled.img`
-//   height: 200px;
-//   width: 200px;
-//   object-fit: contain;
-// `
+  @media (max-width: 700px) {
+    flex: 1;
+  }
+`
 
 const Header = styled.div`
   display: flex;

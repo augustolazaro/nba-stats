@@ -19,6 +19,7 @@ const Header = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 20px;
+  flex-wrap: wrap;
 `
 
 const PageTitle = styled.h1``

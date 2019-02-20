@@ -18,6 +18,7 @@ const Header = styled.div`
   background-color: ${props => props.color};
   padding: 10px 20px;
   color: white;
+  flex-wrap: wrap;
 `
 
 const NameWrapper = styled.div`
@@ -40,6 +41,7 @@ const Record = styled.span`
 const HeaderSection = styled.div`
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 `
 
 const StatWrapper = styled.div`
@@ -52,6 +54,10 @@ const StatNumber = styled.span`
   font-size: 80px;
   font-weight: bold;
   text-align: center;
+
+  @media (max-width: 700px) {
+    font-size: 60px;
+  }
 `
 
 const StatName = styled.span`
@@ -72,6 +78,7 @@ const StatCard = styled.div`
 const StatsContent = styled.div`
   display: flex;
   padding: 20px;
+  flex-wrap: wrap;
 `
 
 const PlayersList = styled.div`

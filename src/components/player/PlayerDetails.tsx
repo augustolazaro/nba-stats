@@ -18,11 +18,17 @@ const Header = styled.div`
   justify-content: space-between;
   background-color: white;
   padding: 10px 20px 0;
+  flex-wrap: wrap;
+
+  @media (max-width: 700px) {
+    flex-direction: column;
+  }
 `
 
 const HeaderSection = styled.div`
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 `
 
 const StatWrapper = styled.div`
@@ -60,6 +66,7 @@ const StatCard = styled.div`
 const StatsContent = styled.div`
   display: flex;
   padding: 20px;
+  flex-wrap: wrap;
 `
 
 const PlayerInfos = styled.div`

@@ -95,7 +95,7 @@ const Home = ({ query, refetch }: Props) => {
     <Container>
       <DateSelector onChange={handleDateChange} />
       <Content>
-        {!games.length && (<EmptyMessage>No scheduled games on this day</EmptyMessage>)}
+        {!games.length && (<EmptyMessage className='empty-message'>No scheduled games on this day</EmptyMessage>)}
         {!!games.length && games.map((game: any) => (
           <GameCard>
             <HelperText>{formatDate(game.date)}</HelperText>

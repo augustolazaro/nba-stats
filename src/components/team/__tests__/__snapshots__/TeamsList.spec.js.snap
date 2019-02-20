@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render teams list with no errors 1`] = `
+<div
+  className="sc-bxivhb glCqXO"
+>
+  <div
+    className="sc-bZQynM cSOULE"
+  >
+    <h1
+      className="sc-htoDjs bZzhDu"
+    >
+      Teams
+    </h1>
+  </div>
+  <div
+    className="sc-ifAKCX cZFrkc"
+  >
+    <div
+      className="sc-EHOje jCEXIt"
+      color="#000"
+      onClick={[Function]}
+    >
+      <div
+        className="sc-gzVnrw kHfKKv"
+        onClick={[Function]}
+      >
+        <svg
+          fill="none"
+          height={25}
+          stroke="rgba(255, 2555, 255, .3)"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+          viewBox="0 0 24 24"
+          width={25}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <polygon
+            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+          />
+        </svg>
+      </div>
+      <img
+        className="sc-bdVaJa hVnfYN"
+        height={200}
+        src=""
+        width={200}
+      />
+    </div>
+    <div
+      className="sc-EHOje jCEXIt"
+      color="#000"
+      onClick={[Function]}
+    >
+      <div
+        className="sc-gzVnrw kHfKKv"
+        onClick={[Function]}
+      >
+        <svg
+          fill="none"
+          height={25}
+          stroke="rgba(255, 2555, 255, .3)"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+          viewBox="0 0 24 24"
+          width={25}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <polygon
+            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+          />
+        </svg>
+      </div>
+      <img
+        className="sc-bdVaJa hVnfYN"
+        height={200}
+        src=""
+        width={200}
+      />
+    </div>
+    <div
+      className="sc-EHOje jCEXIt"
+      color="#000"
+      onClick={[Function]}
+    >
+      <div
+        className="sc-gzVnrw kHfKKv"
+        onClick={[Function]}
+      >
+        <svg
+          fill="none"
+          height={25}
+          stroke="rgba(255, 2555, 255, .3)"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+          viewBox="0 0 24 24"
+          width={25}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <polygon
+            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+          />
+        </svg>
+      </div>
+      <img
+        className="sc-bdVaJa hVnfYN"
+        height={200}
+        src=""
+        width={200}
+      />
+    </div>
+  </div>
+</div>
+`;

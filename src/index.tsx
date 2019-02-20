@@ -12,11 +12,10 @@ import { ContextProvider } from './contexts/FavContext'
 require('dotenv').config()
 
 const client = new ApolloClient({
-  // uri: 'http://localhost:4000/graphql',
-  uri: 'https://57367a0e.ngrok.io/graphql',
+  uri: 'https://c8b5a0db.ngrok.io/graphql',
 });
 
-const theme = {
+export const theme = {
   colors: {
     primary: '#17408B',
     secondary: '#FFF',
@@ -37,7 +36,7 @@ const Root = () => (
   </ApolloProvider>
 )
 
-ReactDOM.render(<Root />, document.getElementById('root'));
+ReactDOM.render(<Root />, document.getElementById('root') || document.createElement('div'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

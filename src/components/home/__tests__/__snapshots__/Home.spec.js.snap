@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render teams list with no errors 1`] = `
+<div
+  className="sc-bZQynM AMncx"
+>
+  <div
+    className="sc-bwzfXH jzJyNX"
+  >
+    <div
+      className="sc-bxivhb ksDfcC"
+      onClick={[Function]}
+    >
+      <svg
+        fill="none"
+        height={50}
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        viewBox="0 0 24 24"
+        width={50}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <polyline
+          points="15 18 9 12 15 6"
+        />
+      </svg>
+    </div>
+    <span
+      className="sc-htpNat fIjutD"
+    >
+      Wednesday, 20/February
+    </span>
+    <div
+      className="sc-bxivhb ksDfcC"
+      onClick={[Function]}
+    >
+      <svg
+        fill="none"
+        height={50}
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        viewBox="0 0 24 24"
+        width={50}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <polyline
+          points="9 18 15 12 9 6"
+        />
+      </svg>
+    </div>
+  </div>
+  <div
+    className="sc-gzVnrw jXalhU"
+  >
+    <span
+      className="empty-message sc-fjdhpX gelbAW"
+    >
+      No scheduled games on this day
+    </span>
+  </div>
+</div>
+`;

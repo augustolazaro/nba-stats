@@ -61,7 +61,7 @@ type Props = {
 
 const FavoritesList = ({ query, history }: Props) => {
   const goToTeamDetails = (id: string) => history.push(`/team/${id}`)
-  const goToPlayerDetails = (id: string) => history.push(`/team/${id}`)
+  const goToPlayerDetails = (id: string) => history.push(`/player/${id}`)
 
   return (
     <Container>
